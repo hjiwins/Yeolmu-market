@@ -1,0 +1,42 @@
+.form {
+    position: relative;
+}
+
+label {
+    display: inline-block;
+    margin: 1rem 0 .5rem;
+}
+
+input {
+    font-size: 1rem;
+    border-style: none;
+    display: inline-block;
+    width: 100%;
+}
+
+textarea {
+    display: block;
+    border-style: none;
+    resize: none;
+    width: 100%;
+}
+
+.formSubmitBtn {
+    position: absolute;
+    right: 0;
+    font-size: 1rem;
+    border-style: none;
+    padding: .5rem;
+    margin-top: .5rem;
+    background-color: indianred;
+    color: #fff;
+}
+
+.photoUploadBtn {
+    font-size: 1rem;
+    border-style: none;
+    padding: .5rem;
+    margin-top: .5rem;
+    background-color: indianred;
+    color: #fff;
+}
