@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+section {
+    background-color: rgb(252, 235, 198);
+    padding: 2rem;
+    padding-bottom: 4rem;
+    border-radius: 15px;
+}
