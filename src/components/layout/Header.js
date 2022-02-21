@@ -16,6 +16,9 @@ function Header() {
           <li>
             <Link to='/favorites'>위시리스트</Link>
           </li>
+          <li>
+            <Link to='/login'>로그인</Link>
+          </li>
         </ul>
       </nav>
     </header>
