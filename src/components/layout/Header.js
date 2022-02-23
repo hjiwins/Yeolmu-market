@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-
+import { useSelector } from 'react-redux';
 import styles from './Header.module.css';
 
 function Header() {
+  const storedUserData = useSelector(state => state.authSlice.userData);
   return (
     <header className={styles.header}>
       <h1>
@@ -16,9 +17,7 @@ function Header() {
           <li>
             <Link to='/favorites'>위시리스트</Link>
           </li>
-          <li>
-            <Link to='/login'>로그인</Link>
-          </li>
+          {storedUserData.isLoggedIn ? <li>{storedUserData.username}으로 로그인됨</li> : <li><Link to='/login'>로그인</Link></li>}
         </ul>
       </nav>
     </header>
