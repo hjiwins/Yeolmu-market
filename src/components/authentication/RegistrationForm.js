@@ -7,13 +7,16 @@ const RegistrationForm = (props) => {
   const passwordInput = useRef();
 
   const submitRegistrationForm = (e) => {
+    // prepares the form data for Register.js
     e.preventDefault();
-    const formPayload = {
+    const image = e.target[3].files[0];
+    const formData = {
       username: usernameInput.current.value,
       email: emailInput.current.value,
       password: passwordInput.current.value,
+      image: image,
     };
-    props.onSubmit(formPayload);
+    props.onSubmit(formData);
   };
 
   return (
@@ -29,6 +32,11 @@ const RegistrationForm = (props) => {
       <div>
         <label>비밀번호</label>
         <input type="password" ref={passwordInput}></input>
+      </div>
+      <div>
+        <label>아바타</label>
+        <input type="file"></input>
+        {props.uploadProgress !== 0 && <p>Upload {props.uploadProgress} % completed.</p>}
       </div>
       <button>회원가입</button>
     </form>
