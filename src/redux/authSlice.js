@@ -6,19 +6,12 @@ export const authSlice = createSlice({
     userData: {
       isLoggedIn: false,
       userId: null,
-      token: null, // Wait for JWT implementation on the backend
+      token: null,
       username: null,
+      avatar: null,
     },
   },
   reducers: {
-    register: (state, action) => {
-      state.userData = {
-        ...state.userData,
-        isLoggedIn: true,
-        userId: action.payload.userId,
-        username: action.payload.username,
-      };
-    },
     login: (state, action) => {
       return {
         ...state,
@@ -27,11 +20,26 @@ export const authSlice = createSlice({
           isLoggedIn: true,
           userId: action.payload.userId,
           username: action.payload.username,
+          avatar: action.payload.avatar,
+          token: action.payload.token,
+        },
+      };
+    },
+    logout: (state) => {
+      return {
+        ...state,
+        userData: {
+          ...state.userData,
+          isLoggedIn: false,
+          userId: null,
+          token: null,
+          username: null,
+          avatar: null,
         },
       };
     },
   },
 });
 
-export const { register, login } = authSlice.actions;
+export const { login, logout } = authSlice.actions;
 export default authSlice.reducer;
