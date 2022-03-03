@@ -16,7 +16,7 @@ const Register = () => {
     if (!formData.image) return;
 
     // Start image upload to firebase
-    const storageRef = ref(storage, `/avatars/${formData.image.name}`);
+    const storageRef = ref(storage, `/avatars/${formData.username + "_avatar_" + Date.now()}`);
     const uploadTask = uploadBytesResumable(storageRef, formData.image);
 
     uploadTask.on(
