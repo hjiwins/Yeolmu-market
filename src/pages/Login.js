@@ -29,6 +29,8 @@ const Login = () => {
             isLoggedIn: true,
             userId: result.userId,
             username: result.username,
+            avatar: result.avatar,
+            token: result.token
           }));
         }
       })
@@ -37,7 +39,6 @@ const Login = () => {
 
   return (
     <section className="authenticationSection">
-      {storedUserData.isLoggedIn && <p>User logged as {storedUserData.username} </p>}
       <h1>로그인</h1>
       <LoginForm onSubmit={sendLoginRequest} />
       <p>
