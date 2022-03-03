@@ -17,6 +17,7 @@ function Header() {
           <li>
             <Link to='/favorites'>위시리스트</Link>
           </li>
+          {storedUserData.isLoggedIn && <li><img className={styles.userAvatar} height="75px" width="75px" alt='user avatar' src={storedUserData.avatar}></img></li>}
           {storedUserData.isLoggedIn ? <li>{storedUserData.username}으로 로그인됨</li> : <li><Link to='/login'>로그인</Link></li>}
         </ul>
       </nav>
