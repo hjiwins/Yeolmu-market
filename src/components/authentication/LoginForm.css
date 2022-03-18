@@ -1,0 +1,9 @@
+.authenticationSection{
+    width: 500px;
+    margin: auto;
+}
+
+.authenticationSection button{
+    margin: 20px auto;
+    padding: 5px;
+}
