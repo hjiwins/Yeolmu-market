@@ -3,29 +3,18 @@ import { useState, useEffect } from "react";
 import UploadedList from "../components/items/UploadedList";
 
 function AllItems() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [loadedItems, setLoadedItems] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
 
-    fetch("https://yeolmu-market-default-rtdb.firebaseio.com/items.json")
-      .then((response) => {
-        return response.json();
-      })
+    fetch("http://localhost:3000/api/item/get")
+      .then((response) => response.json())
       .then((data) => {
-        const items = [];
-
-        for (const key in data) {
-          const item = {
-            id:key,
-            ...data[key]
-          }
-          items.push(item)
-        }
-
         setIsLoading(false);
-        setLoadedItems(items);
+        // The json data is directly passed to the child component where the loop + render will occurr.
+        setLoadedItems(data);
       });
   }, []);
 
