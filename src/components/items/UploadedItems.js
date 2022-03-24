@@ -1,12 +1,13 @@
 import style from "./UploadedItems.module.css";
 import Card from "../ui/Card";
 
+// TODO: Change name to UploadedItem or similar because this component represent just ONE item
 function UploadedItems(props) {
   return (
     <li className={style.item}>
       <Card>
         <div className={style.image}>
-          <img src={props.image} alt={props.title} />
+          <img src={props.photo} alt={props.photo} />
         </div>
         <div className={style.content}>
           <h3>{props.title}</h3>
