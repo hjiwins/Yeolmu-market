@@ -1,16 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
-import { login } from '../redux/authSlice'
+import { login } from "../redux/authSlice";
 import { Link } from "react-router-dom";
 import LoginForm from "../components/authentication/LoginForm";
 import { useEffect } from "react";
-
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch();
   const storedUserData = useSelector((state) => state.authSlice.userData);
+  const history = useHistory();
+
   useEffect(() => {
-    storedUserData.isLoggedIn && alert(`Welcome ${storedUserData.username}`);
-  }, [storedUserData])
+    if (storedUserData.isLoggedIn) {
+      alert(`Welcome ${storedUserData.username}`);
+      history.push('/');
+    }
+  }, [storedUserData, history]);
 
   const sendLoginRequest = (formData) => {
     fetch("http://localhost:3000/api/user/login", {
@@ -25,13 +30,15 @@ const Login = () => {
         if (result.errorMessage) {
           alert(`${result.errorMessage}`);
         } else {
-          dispatch(login({
-            isLoggedIn: true,
-            userId: result.userId,
-            username: result.username,
-            avatar: result.avatar,
-            token: result.token
-          }));
+          dispatch(
+            login({
+              isLoggedIn: true,
+              userId: result.userId,
+              username: result.username,
+              avatar: result.avatar,
+              token: result.token,
+            })
+          );
         }
       })
       .catch((error) => console.log(error));
@@ -44,7 +51,6 @@ const Login = () => {
       <p>
         회원가입 안 하셨나요? <Link to="/register">회원가입</Link> 하세요!
       </p>
-      
     </section>
   );
 };
