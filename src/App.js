@@ -15,9 +15,7 @@ function App() {
   const token = document.cookie.split("=")[1];
   const autologin = () => {
     // Sends a request to the API to verify the existent cookie with the token.
-    //
     // If the token is correct, dispatch the login reducer.
-    // If the token is incorrect, do nothing.
     fetch("http://localhost:3000/api/user/autologin", {
       method: "POST",
       body: JSON.stringify({ token: token }),
@@ -47,10 +45,10 @@ function App() {
   };
   const dispatch = useDispatch();
   useEffect(() => {
-    //TODO: Check if there is a cookie
+    // Check if there is a cookie
     const token = document.cookie.split("=")[1];
-    // TODO: if the cookie is not there don't do anything
-    // TODO: If the cookie is present, execute the autologin function
+    // if the cookie is not there don't do anything
+    // If the cookie is present, execute the autologin function
     autologin()
   }, []);
   return (
