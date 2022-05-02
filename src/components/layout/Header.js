@@ -40,7 +40,11 @@ function Header() {
             </li>
           )}
           {storedUserData.isLoggedIn && (
-            <li onClick={() => dispatch(logout())}>
+            <li onClick={() => {
+              // Replace the token cookie to an empty value and dispatch the redux logout to clear state
+              document.cookie = `token=`
+              dispatch(logout());
+              }}>
               <Link to='/'>
                 로그아웃
               </Link>

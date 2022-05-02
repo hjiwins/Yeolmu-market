@@ -30,6 +30,9 @@ const Login = () => {
         if (result.errorMessage) {
           alert(`${result.errorMessage}`);
         } else {
+          // Save the token in a cookie
+          document.cookie = `token=${result.token}`
+          // Save login data in Redux
           dispatch(
             login({
               isLoggedIn: true,
